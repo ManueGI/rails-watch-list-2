@@ -1,0 +1,17 @@
+<div  tabindex="-1" role="dialog">
+  <div role="document">
+    <div >
+      <div >
+        <h5 >Ajoute un film à ta liste</h5>
+      </div>
+
+      <%= simple_form_for [list, bookmark] do |f| %>
+        <div class="modal-body">
+          <%= f.association :movie, collection: Movie.all.order(:title), prompt: "Select a movie", input_html: { data: { controller: "tom-select" } } %>
+          <%= f.input :comment, placeholder: "Enter a comment about the movie" %>
+          <%= f.submit "Add movie", class: "btn btn-flat" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

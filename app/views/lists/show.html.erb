@@ -1,0 +1,17 @@
+<h1><%= @list.name %></h1>
+
+<div class="row my-2">
+<% @list.bookmarks.each do |bookmark| %>
+  <div class="card col-3">
+    <%= bookmark.movie.title %>
+    <img src="<%= bookmark.movie.poster_url %>" alt="">
+    <%= bookmark.movie.overview %>
+    <%= bookmark.comment %>
+    <%= link_to "X", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Veux-tu vraiment supprimer ce film de ta liste ?"} %>
+  </div>
+<% end %>
+</div>
+
+<%= render "bookmarks/modal", list: @list, bookmark: @bookmark %>
+
+<%#= link_to "Ajouter un film", new_list_bookmark_path(@list) %>

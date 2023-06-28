@@ -1,0 +1,8 @@
+<p>Ajouter un film</p>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+<%= f.input :comment, label: "Commentaire" %>
+<%= f.association :movie, prompt: "Choisir un film", input_html: {data: { controller: "tom-select"}}  %>
+<%= f.submit "Ajouter" %>
+
+
+<% end %>

@@ -1,0 +1,17 @@
+<h1>Mes listes</h1>
+
+<%@lists.each do |list| %>
+  <%= link_to list_path(list) do %>
+    <div class="card">
+    <h3><%= list.name %></h1>
+     <%= link_to "X", list_path(list), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Es-tu sûr(e) de vouloir supprimer cette liste ?" } %>
+
+    </div>
+    <% end %>
+
+<% end %>
+
+<%= simple_form_for @list do |f| %>
+  <%= f.input :name, label: "Nom de la liste" %>
+  <%= f.submit "Créer la liste"  %>
+<% end %>
