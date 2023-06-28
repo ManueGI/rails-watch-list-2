@@ -2,8 +2,9 @@
 
 <%@lists.each do |list| %>
   <%= link_to list_path(list) do %>
-    <div class="card">
+    <div class="card-list col-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%=  cl_image_path list.photo.key, height: 300, crop: :fill if list.photo.attached? %>')">
     <h3><%= list.name %></h1>
+
      <%= link_to "X", list_path(list), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Es-tu sûr(e) de vouloir supprimer cette liste ?" } %>
 
     </div>
@@ -13,5 +14,6 @@
 
 <%= simple_form_for @list do |f| %>
   <%= f.input :name, label: "Nom de la liste" %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit "Créer la liste"  %>
 <% end %>
